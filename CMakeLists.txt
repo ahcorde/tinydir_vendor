@@ -27,6 +27,10 @@ configure_file(tinydir_vendorConfig.cmake.in "${PROJECT_BINARY_DIR}/tinydir_vend
 configure_file(tinydir_vendorConfig-version.cmake.in "${PROJECT_BINARY_DIR}/tinydir_vendorConfig-version.cmake" @ONLY)
 
 install(FILES
+  package.xml
+  DESTINATION share/${PROJECT_NAME})
+
+install(FILES
   "${PROJECT_BINARY_DIR}/tinydir_vendorConfig.cmake"
   "${PROJECT_BINARY_DIR}/tinydir_vendorConfig-version.cmake"
   DESTINATION share/${PROJECT_NAME}/cmake)
