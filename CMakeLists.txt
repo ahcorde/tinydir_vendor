@@ -34,7 +34,7 @@ if(DEFINED CMAKE_TOOLCHAIN_FILE)
 endif()
 
 include(ExternalProject)
-ExternalProject_Add(tinydir-1.2.4
+externalproject_add(tinydir-1.2.4
   PREFIX tinydir-1.2.4
   URL https://github.com/cxong/tinydir/archive/1.2.4.tar.gz
   URL_MD5 15978c5f498e2ff3d26a9975c734cda0
