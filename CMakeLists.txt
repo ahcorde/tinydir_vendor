@@ -34,7 +34,7 @@ if(DEFINED CMAKE_TOOLCHAIN_FILE)
 endif()
 
 include(ExternalProject)
-ExternalProject_Add(tinydir-1.2.4
+externalproject_add(tinydir-1.2.4
   PREFIX tinydir-1.2.4
   URL https://github.com/cxong/tinydir/archive/1.2.4.tar.gz
   URL_MD5 15978c5f498e2ff3d26a9975c734cda0
@@ -58,6 +58,22 @@ install(
 
 configure_file(tinydir_vendorConfig.cmake.in "${PROJECT_BINARY_DIR}/tinydir_vendorConfig.cmake" @ONLY)
 configure_file(tinydir_vendorConfig-version.cmake.in "${PROJECT_BINARY_DIR}/tinydir_vendorConfig-version.cmake" @ONLY)
+
+find_package(ament_cmake_test QUIET)
+if(BUILD_TESTING)
+  find_package(ament_cmake_copyright QUIET)
+  find_package(ament_cmake_lint_cmake QUIET)
+  find_package(ament_cmake_xmllint QUIET)
+  if(ament_cmake_copyright_FOUND)
+    ament_copyright()
+  endif()
+  if(ament_cmake_lint_cmake_FOUND)
+    ament_lint_cmake()
+  endif()
+  if(ament_cmake_xmllint_FOUND)
+    ament_xmllint()
+  endif()
+endif()
 
 install(FILES
   package.xml
